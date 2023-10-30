@@ -8,7 +8,7 @@ const NAVIGATION_ITEMS = [
 	{
 		title: "홈",
 		icon: Home,
-		link: "/dashboard/",
+		link: "/dashboard",
 	},
 	{
 		title: "프로필",

@@ -1,5 +1,5 @@
 "use client"
-import { Bell, Database, DoorOpen, Hash, Home, Mail, Settings, User2 } from "lucide-react";
+import { Bell, Database, DoorOpen, Hash, Home, Mail, Settings, User2, MessagesSquare } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { Logo_Symbol } from "../Logo";
@@ -16,24 +16,16 @@ const NAVIGATION_ITEMS = [
 		link: "/dashboard/profile"
 	}, {
 		title: "상담공간",
-		icon: DoorOpen,
-		link: "/room"
+		icon: MessagesSquare,
+		link: "/dashboard/chat"
 	},
-	{
-		title: "태그",
-		icon: Hash,
-		link: "/dashboard/tag"
-	},
+
 	{
 		title: "알림",
 		icon: Bell,
 		link: "/dashboard/info"
 	},
 	{
-		title: "메시지",
-		icon: Mail,
-		link: "/dashboard/msg"
-	}, {
 		title: "설정",
 		icon: Settings,
 		link: "/dashboard/settings"

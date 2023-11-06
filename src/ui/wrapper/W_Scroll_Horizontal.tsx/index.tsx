@@ -18,13 +18,13 @@ const W_Scroll_Horizontal: React.FC<Scroll_Horizontal_Section_Props> = ({ childr
 	}
 	const childItems =
 		React.Children.map(children, (child, index) =>
-			(<section className='w-full flex-shrink-0 snap-start bg-red-100'>{child}</section>));
+			(<section className='w-full flex-shrink-0 snap-start'>{child}</section>));
 
 
 	return (
 		<div
 			ref={scrollContainerRef}
-			className="scroll-container flex overflow-y-auto overflow-x-scroll scrollbar-hide"
+			className="flex overflow-y-auto overflow-x-scroll scrollbar-hide"
 			onWheel={handleScroll}
 			style={{ scrollSnapType: 'x mandatory' }}
 		>

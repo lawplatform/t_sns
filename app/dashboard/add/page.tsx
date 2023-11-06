@@ -4,13 +4,7 @@ import { Button } from '@/components/ui/button';
 import { FC } from 'react';
 
 export default function Home() {
-	const addFriend = asycn(email: strig)=> {
-		try {
-			const validatedEamil = v_addFriend.parse({ eamil });
-		} catch (error) {
 
-		}
-	}
 
 	return (
 		<main className='pt-8'>

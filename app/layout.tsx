@@ -4,6 +4,8 @@ import './globals.css'
 import { SessionProvider } from 'next-auth/react'
 import NextAuthProvider from '@/src/provider/authsession'
 import { Toaster } from "@/components/ui/toaster"
+import { cn } from '@/lib/utils'
+import N_horizontal from '@/src/ui/navigation/n_horizontal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +20,13 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>
+		<html lang="en" className={cn('light  text-slate-900 antialiased', inter.className)}>
+			<body className="min-h-screen bg-slate-50  antialiased">
 				<NextAuthProvider>
-					{children}
+					<N_horizontal />
+					<div className='container mx-auto h-full max-w-7xl pt-12'>
+						{children}
+					</div>
 					<Toaster />
 				</NextAuthProvider>
 			</body>

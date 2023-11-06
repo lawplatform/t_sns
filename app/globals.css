@@ -3,6 +3,14 @@
 @tailwind utilities;
  
 @layer base {
+	section{
+	margin:auto;
+	justify-content:center;
+	align-items: center;
+     display:flex;
+     width: 100vw;
+	 height:100vh;
+	}
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

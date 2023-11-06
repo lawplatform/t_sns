@@ -8,6 +8,15 @@ dependencies:
   '@auth/supabase-adapter':
     specifier: ^0.1.6
     version: 0.1.6(@supabase/supabase-js@2.38.4)
+  '@babylonjs/core':
+    specifier: ^6.28.1
+    version: 6.28.1
+  '@babylonjs/gui':
+    specifier: ^6.28.1
+    version: 6.28.1(@babylonjs/core@6.28.1)
+  '@babylonjs/loaders':
+    specifier: ^6.28.1
+    version: 6.28.1(@babylonjs/core@6.28.1)(babylonjs-gltf2interface@6.28.1)
   '@editorjs/editorjs':
     specifier: ^2.28.2
     version: 2.28.2
@@ -50,6 +59,9 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
+  glTF:
+    specifier: link:@babylonjs/loaders/glTF
+    version: link:@babylonjs/loaders/glTF
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
@@ -65,6 +77,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-babylonjs:
+    specifier: ^3.1.25
+    version: 3.1.25(@babylonjs/core@6.28.1)(@babylonjs/gui@6.28.1)(react-dom@18.2.0)(react@18.2.0)
   react-day-picker:
     specifier: ^8.9.1
     version: 8.9.1(date-fns@2.30.0)(react@18.2.0)
@@ -159,6 +174,28 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+
+  /@babylonjs/core@6.28.1:
+    resolution: {integrity: sha512-7D0L//yQDq0WU5Mj6os3fGNoy8dtCONgRJ2ji2PMNwZlQ6jH3e5OnoaMYss1QuNCoGeTrXbNuNa7z8RezuFrCQ==}
+    dev: false
+
+  /@babylonjs/gui@6.28.1(@babylonjs/core@6.28.1):
+    resolution: {integrity: sha512-si8REM177m2Pk0DUn1d3xXyfKmOKosK4uY8Dw+eOL8FuCGvGQe5Yuw2qgkw2BbVMkFdg2qSib5vqxaLa97c1kg==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.28.1
+    dev: false
+
+  /@babylonjs/loaders@6.28.1(@babylonjs/core@6.28.1)(babylonjs-gltf2interface@6.28.1):
+    resolution: {integrity: sha512-MrvkQxNaWotVE1xnKHCW/mij80efBH4sCM1xybEw2abAxr0jGfdSpPAKnddsqRE3JsAqyp40QaeHd5ngSKIaQg==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+      babylonjs-gltf2interface: ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.28.1
+      babylonjs-gltf2interface: 6.28.1
+    dev: false
 
   /@editorjs/editorjs@2.28.2:
     resolution: {integrity: sha512-g6V0Nd3W9IIWMpvxDNTssQ6e4kxBp1Y0W4GIf8cXRlmcBp3TUjrgCYJQmNy3l2a6ZzhyBAoVSe8krJEq4g7PQw==}
@@ -1046,6 +1083,10 @@ packages:
     dependencies:
       dequal: 2.0.3
     dev: true
+
+  /babylonjs-gltf2interface@6.28.1:
+    resolution: {integrity: sha512-rBOS/Vl2xpsHx93m2mGJOOqi1ofLgVGNFp5C56byrUqqlDz+GdmuLtROrHTDMZaEkHsCv8GWW72o3qFTBjSJOQ==}
+    dev: false
 
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -2777,6 +2818,25 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  /react-babylonjs@3.1.25(@babylonjs/core@6.28.1)(@babylonjs/gui@6.28.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-hfk4IWNM0YhEojrJfeVgLk4zwz1WNvVVeKetzh+tQ81gMCXYR3hHb/0q+BupL7fC1fQKM25FIXfih9dzswCFnA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@babylonjs/core': 5.x || 6.x
+      '@babylonjs/gui': 5.x || 6.x
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+    dependencies:
+      '@babylonjs/core': 6.28.1
+      '@babylonjs/gui': 6.28.1(@babylonjs/core@6.28.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-reconciler: 0.27.0(react@18.2.0)
+    dev: false
+
   /react-day-picker@8.9.1(date-fns@2.30.0)(react@18.2.0):
     resolution: {integrity: sha512-W0SPApKIsYq+XCtfGeMYDoU0KbsG3wfkYtlw8l+vZp6KoBXGOlhzBUp4tNx1XiwiOZwhfdGOlj7NGSCKGSlg5Q==}
     peerDependencies:
@@ -2809,6 +2869,17 @@ packages:
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
+
+  /react-reconciler@0.27.0(react@18.2.0):
+    resolution: {integrity: sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==}
+    engines: {node: '>=0.10.0'}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.2.0
+      scheduler: 0.21.0
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -2915,6 +2986,12 @@ packages:
       get-intrinsic: 1.2.2
       is-regex: 1.1.4
     dev: true
+
+  /scheduler@0.21.0:
+    resolution: {integrity: sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
 
   /scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}

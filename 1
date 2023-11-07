@@ -38,8 +38,8 @@ const NAVIGATION_ITEMS = [
 export default function N_vertical() {
 	const pathname = usePathname();
 	return (
-		<section className=" fixed left-0  top-0 h-screen  w-20 flex-col  px-3 py-10 shadow-md">
-			<div className="absolute  left-5 top-0">
+		<section className=" fixed left-0  top-0 h-screen  w-20 flex-col bg-red-100 px-3 py-10 shadow-md">
+			<div className="left-3">
 				<Logo_Symbol color={"black"} />
 			</div>
 			{NAVIGATION_ITEMS.map((item, index) => (

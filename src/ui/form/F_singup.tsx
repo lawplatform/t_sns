@@ -30,7 +30,7 @@ export default function F_signup() {
 	return (
 		<div>
 
-			<Button onClick={() => signIn('google', { callbackUrl: 'http://example.com/custom-callback-url' })}>구글로 로그인 </Button>
+			<Button onClick={() => signIn('google', { callbackUrl: "/dashboard" })}>구글로 로그인 </Button>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 					<div className="flex w-full">

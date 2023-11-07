@@ -19,6 +19,7 @@ export default function Home() {
 						src={session.user.image || ""}
 					/>
 					<p className="text-sky-600"> {session.user.email}</p>
+					<p> token:{session.supabaseAccessToken}</p>
 				</>
 			) : (
 				<div> you shold login this stage!</div>

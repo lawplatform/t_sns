@@ -5,12 +5,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import EditorJS from "@editorjs/editorjs";
 import H_ink_splash from "@/src/page/hero/h_ink_splash";
+import supabase from "@/src/provider/supabase";
 export default function Home() {
 	const { data: session, status } = useSession();
 	return (
 		<div>
 			<H_ink_splash></H_ink_splash>
-			<button onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000/bar', redirect: false }
+			<button onClick={() => signIn('google', { callbackUrl: '/', redirect: false }
 			)}>Sign In</button>
 			<button onClick={() => signOut()}>Sign Out</button>
 			{session?.user ? (

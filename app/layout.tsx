@@ -71,7 +71,7 @@ export default function RootLayout({
 			<body className="min-h-screen bg-slate-50  antialiased">
 				<NextAuthProvider>
 					<N_horizontal />
-					<div className='container mx-auto h-full max-w-7xl pt-12'>
+					<div className='container mx-auto h-full max-w-7xl pt-14'>
 						{children}
 					</div>
 					<Toaster />

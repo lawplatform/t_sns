@@ -12,7 +12,8 @@ import C_user from "@/src/ui/card/c_user";
 
 export default function Home() {
 	return (
-		<div>
+
+		<div className="w-full">
 			<h1>card section collection</h1>
 			<div className="mb-2 grid grid-cols-3">
 				<C_profile_h />
@@ -38,6 +39,6 @@ export default function Home() {
 				<C_product_2 />
 			</div>
 			<C_comment />
-		</div>
+		</div >
 	);
 }

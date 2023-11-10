@@ -3,7 +3,9 @@ import { FC, ReactNode } from 'react';
 import { Engine, Scene, Camera } from 'react-babylonjs'
 const SceneContainer: React.FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => (
 	<div style={{ flex: 1, display: 'flex bg-transparent' }}>
-		<Engine antialias adaptToDeviceRatio canvasId="babylon-canvas">
+		<Engine antialias adaptToDeviceRatio canvasId="babylon-canvas" renderOptions={{
+			whenVisibleOnly: true,
+		}} >
 			<Scene
 				clearColor={new Color4(0, 0, 0, 0)}>
 

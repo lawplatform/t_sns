@@ -1,10 +1,49 @@
-import './bg_transparent.css'
-export default function Bg_transparent() {
+import { getSeoulTimeformDate, getTime } from "@/lib/times";
+import supabase from "@/src/provider/supabase";
+import { useState } from "react";
+import { observable } from "@legendapp/state";
+type Message = {
+	created_at: string;
+	id: number;
+	msg: string;
+	name: string;
+};
+const messages$ = observable([{ creted_at: "", msg: "", name: "" }]);
+
+export default function Board_message() {
+	const me = "kim";
+	const [messages, setMessages] = useState<Messaege[]>(''); // State to store the message
+	const [prevTime, setPrevTime] = useState('');
+	const [isnow, setIsNow] = useState(false);
+
+
+	const handleInserts = (payload: any) => {
+		console.log("Change received!", payload.new);
+		payload.new.name = "힘쎄";
+		payload.new.created_at = getTime(payload.new.created_at);
+		if (payload.new.created_at !== prevTime) {
+			setIsNow(true);
+		} else {
+			setIsNow(false);
+			setPrevTime(payload.new.created_at);
+		}
+		messages$.assign({ msg: payload.new.msg });
+		//setMessages([...messages, payload.new]);
+	};
+
+
+	// Listen to inserts
+	supabase
+		.channel("real")
+		.on(
+			"postgres_changes",
+			{ event: "INSERT", schema: "public", table: "real" },
+			handleInserts
+		)
+		.subscribe();
 	return (
-		<div className="mx-auto w-full">this
-			<div className='glass absolute mx-auto h-screen w-full h-screen'>mrstarst</div>
-			<img src="/effect/object/monitor-color.png" />
-			<div className="bg-psky">arst</div>
+		<div className=" mx-auto h-[500px] overflow-y-scroll scrollbar-hide lg:w-2/3">
+			{messages$.get()}
 		</div>
 	)
 }

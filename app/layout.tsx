@@ -6,6 +6,7 @@ import NextAuthProvider from '@/src/provider/authsession'
 import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils'
 import N_horizontal from '@/src/ui/navigation/n_horizontal'
+import N_h_expand from '@/src/ui/navigation/n_h_expand.tsx'
 
 const inter = Inter({ subsets: ['latin'] })
 

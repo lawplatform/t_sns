@@ -1,20 +1,22 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Database } from "@/types/supabase";
 import { observable } from "@legendapp/state";
+import { useEffect } from "react";
+import { enableReactUse } from "@legendapp/state/config/enableReactUse";
 
+interface msgtype {
+	id: number;
+	msg: string;
+	name: string;
+}
 
-type real = Database['public']['Tables']['real']['Row'];
-
+const state$ = observable({ m: [] as msgtype[] })
+const stateNum$ = observable(3);
 export default function Home() {
-	//const state$ = observable({ messages: [] });
-	const state$ =
-		observable<{ messages: real[] }>({ messages: [], });
-
+	enableReactUse();
 	const add = () => {
-		state$.messages.push({
-			created_at: "",
+		state$.m.push({
 			id: 0,
 			msg: "hi",
 			name: "yoon"
@@ -22,8 +24,14 @@ export default function Home() {
 		console.log(state$.get());
 
 	}
+
+
 	return (
-		<div> Home
+		<div>
+			{stateNum$.get()}
+			<div className="h-52">
+				{state$.m.get("name")}
+			</div>
 			<Input type="text" />
 			<Button onClick={add} > click</Button>
 		</div >

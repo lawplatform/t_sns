@@ -1,7 +1,9 @@
 import anime from "animejs";
 import { useEffect } from "react";
 
-export default function Sec_description() {
+
+
+export default function Sec_with_intersection() {
 	useEffect(() => {
 		const box = document.querySelector('.box');
 		const aniBox = anime({

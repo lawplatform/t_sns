@@ -16,9 +16,6 @@ export default function Home() {
 	requestAnimationFrame(raf)
 	//get current mouse posistion 
 
-
-	//setting for animejs
-
 	//allocated scroll animation 
 	useEffect(() => {
 		const green = anime({
@@ -87,6 +84,9 @@ export default function Home() {
 		}
 	}
 		, [])
+
+
+
 
 
 	return (

@@ -4,8 +4,8 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
 
-
 import jwt from "jsonwebtoken";
+import { checkCustomEmail } from "@/app/lab/action";
 const handler = NextAuth({
 	adapter: SupabaseAdapter({
 		url: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
@@ -45,8 +45,20 @@ const handler = NextAuth({
 			// Allows callback URLs on the same origin
 			else if (new URL(url).origin === baseUrl) return url
 			return baseUrl
+
+		},
+		async signIn(user, accont, profile, email) {
+			const emailExists = await checkCustomEmail(email);
+			if (emailExists) {
+				console.log("emial existed confirm");
+
+				return true; // Return false to prevent sign-in
+			}
+			return '/register' + email;
+
 		}
-	}
+	},
+
 
 
 })

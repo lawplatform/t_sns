@@ -1,12 +1,6 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/Xx6DE3L
- */
-
 "use client"
 import { Button } from "@/components/ui/button"
 import Star from "../ui/symbol/Star"
-
 export default function sec_product_detail() {
 	return (
 		<div className=" bg-red-100 md:max-w-6xl">

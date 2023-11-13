@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import supabase from "@/src/provider/supabase";
-import Board_message from "@/src/ui/board/board_message";
+import Board_chat_message from "@/src/ui/board/board_chat_message_legend";
 import F_formItem_test from "@/src/ui/form/F_formItem_test";
 import F_message from "@/src/ui/form/F_message";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +20,7 @@ import { z } from "zod";
 
 export default function Home() {
 
-	async function send(values: { msg: string; }): void {
+	async function send(values: { msg: string; }) {
 		const { data, error } = await supabase
 			.from('real')
 			.insert([
@@ -31,8 +31,8 @@ export default function Home() {
 	}
 	return (
 		<div>
-			<h1>chat class</h1>
-			<Board_message />
+			<h1>chat class.</h1>
+			<Board_chat_message />
 			<F_message send={send} />
 		</div>
 	);

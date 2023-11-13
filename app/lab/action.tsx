@@ -7,21 +7,29 @@ import { z } from "zod";
 
 export async function serverActionTemp(data: z.infer<typeof UserSchema>) {
 	'use server';
-	console.log('--- fServerAction ---');
 	console.log(data);
 
 	//redirect('/')
 
 }
 
-
 export async function checkNameAlreadyExist(name: string) {
 	const { data, error } = await supabase.from('users').select('name').eq('name', name);
 	if (error) {
-		console.error("supabase error");
 		return false
 	}
-	console.log("already existed");
-	console.log(data);
 	return data.length > 0;
+}
+
+
+export async function checkCustomEmail(email: string) {
+	const { data, error } = await supabase.from('users').select('email').eq('email', email);
+	if (error) {
+		return false
+	}
+	return data.length > 0;
+}
+
+export async function isCustomEmail(email: string) {
+	return ['gmail', 'navea', 'kakao'].some(domain => email.includes(domain));
 }

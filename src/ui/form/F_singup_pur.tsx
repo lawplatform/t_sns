@@ -1,10 +1,13 @@
-import { checkNameAlreadyExist } from "@/app/lab/action"
+"use client"
+import { checkCustomEmail, checkNameAlreadyExist, isCustomEmail } from "@/app/lab/action"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import supabase from "@/src/provider/supabase"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Mail, User2, Lock } from "lucide-react"
+import { signIn } from "next-auth/react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -20,9 +23,16 @@ const formSchema = z.object({
 	}),
 	email: z.string().email({
 		message: "잘못된 이메일 형식입니다",
-	}),
+	}).refine(async (value) => {
+		const exists = await checkCustomEmail(value);
+		return !exists; // Return true if the name doesn't exist
+	}, { message: '이미 가입한 메일 주소 입니다', }).refine(async (value) => {
+		const mailexist = await isCustomEmail(value);
+		return !mailexist;
+	}, { message: 'sns 가입을 이용해주세요' })
+	,
 	password: z.string().min(6, {
-		message: "패스워드는 6글자 이상입니다",
+		message: "패스워드는 6글자 이상입니다"
 	}).refine((password) => {
 		// Check if the password contains at least one special character
 		return /[!@#$%^&*]/.test(password);
@@ -45,20 +55,44 @@ export default function F_signup_pur() {
 		const values = form.getValues();
 		return Object.values(values).every((value) => !!value);
 	};
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
+
+
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		fetch('/api/user/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(values),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('Server response:', data);
+				// Handle the response data here
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+				// Handle errors here
+			});
+		form.reset();
 	}
 
 
+	const searchParams = useSearchParams()
+	const search = searchParams.get('email')
 
 
+	useEffect(() => {
+		form.setValue('email', search!);
+
+	}, [])
 
 
 
 	return (
-		<div className="bg-grey-lightest font-sans antialiased">
-			<Button onClick={() => clickHandler()}>make error</Button>
-			<Form {...form}>
+		<div className="bg-grey-lightest bg-red-100 font-sans antialiased">
+			<Button onClick={() => signIn('google', { callbackUrl: '/', redirect: false })}>next Auth logint</Button>
+			<Form {...form} >
 
 				<form className="bg-grey-lightest w-full pt-4" onSubmit={form.handleSubmit(onSubmit)}>
 					<div className="container mx-auto py-8">

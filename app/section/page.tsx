@@ -5,7 +5,7 @@ import W_Scroll_Horizontal from "@/src/ui/wrapper/W_Scroll_Horizontal.tsx";
 import anime from "animejs";
 import { useEffect } from "react";
 
-export default function Home() {
+export default function Horizontal_Scroll_Page() {
 	return (
 		<div>
 			<W_Scroll_Horizontal>

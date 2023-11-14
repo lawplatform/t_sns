@@ -22,7 +22,7 @@ export async function checkNameAlreadyExist(name: string) {
 }
 
 
-export async function checkCustomEmail(email: string) {
+export async function checkEmailAlreadyExist(email: string) {
 	const { data, error } = await supabase.from('users').select('email').eq('email', email);
 	if (error) {
 		return false

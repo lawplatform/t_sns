@@ -11,8 +11,11 @@ export default function Home() {
 	return (
 		<div>
 			<H_ink_splash></H_ink_splash>
-			<button onClick={() => signIn('google', { callbackUrl: '/', redirect: false }
-			)}>Sign In</button>
+			<button
+				onClick={() => signIn("google", { callbackUrl: "/", redirect: false })}
+			>
+				Sign In
+			</button>
 			<button onClick={() => signOut()}>Sign Out</button>
 			{session?.user ? (
 				<>

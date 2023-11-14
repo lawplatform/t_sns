@@ -18,7 +18,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 type FormData = z.infer<typeof userAuthSchema>
 
-export function F_signin({ className, ...props }: UserAuthFormProps) {
+export function F_signin_email({ className, ...props }: UserAuthFormProps) {
 	const {
 		register,
 		handleSubmit,

@@ -5,7 +5,8 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/src/ui/icons"
-import { F_signin } from "@/src/ui/form/F_signin"
+import { F_signin_email } from "@/src/ui/form/F_sigin_email"
+import { F_signin_credential } from "@/src/ui/form/F_signin_credential"
 
 export const metadata: Metadata = {
 	title: "Login",
@@ -23,10 +24,10 @@ export default function Home() {
 						환영합니다
 					</h1>
 					<p className="text-sm text-muted-foreground">
-						이메일 주소를 통해 로그인하기
+						아이디와 비번을 통해 로그인하기.
 					</p>
 				</div>
-				<F_signin />
+				<F_signin_credential />
 				<p className="px-8 text-center text-sm text-muted-foreground">
 					<Link
 						href="/register"

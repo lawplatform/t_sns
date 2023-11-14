@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Noto_Sans } from 'next/font/google'
 import './globals.css'
 import { SessionProvider } from 'next-auth/react'
 import NextAuthProvider from '@/src/provider/authsession'
@@ -9,7 +9,12 @@ import N_horizontal from '@/src/ui/navigation/n_horizontal'
 import N_h_expand from '@/src/ui/navigation/n_h_expand.tsx'
 
 const inter = Inter({ subsets: ['latin'] })
-
+const noto = Noto_Sans({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-noto',
+	weight: '400',
+})
 export const metadata: Metadata = {
 	title: "title",
 	generator: "framework",
@@ -24,7 +29,6 @@ export const metadata: Metadata = {
 		"shadcn-ui",
 	],
 	authors: [{ name: "author", url: "Site URL" }],
-	colorScheme: "dark",
 	creator: "author",
 	publisher: "author",
 	alternates: {},
@@ -68,16 +72,16 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={cn('light  text-slate-900 antialiased', inter.className)}>
+		<html lang="en" className={`${noto.variable}`}>
 			<body className="min-h-screen bg-slate-50  antialiased">
 				<NextAuthProvider>
 					<N_horizontal />
-					<div className='container mx-auto h-full max-w-7xl pt-14'>
+					<div className='container mx-auto h-full max-w-7xl pt-20'>
 						{children}
 					</div>
 					<Toaster />
 				</NextAuthProvider>
 			</body>
-		</html>
+		</html >
 	)
 }

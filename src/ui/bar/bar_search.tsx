@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input"
 
 export default function Bar_Search() {
 	return (
-		<div className="relative w-80">
+		<div className="relative w-full md:w-80">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				className="absolute bottom-0 left-3 top-0 my-auto h-6 w-6 text-gray-500"

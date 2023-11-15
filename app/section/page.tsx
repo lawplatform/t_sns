@@ -7,7 +7,9 @@ import { useEffect } from "react";
 
 export default function Horizontal_Scroll_Page() {
 	return (
+
 		<div>
+			<Info_404 />
 			<W_Scroll_Horizontal>
 				<div>het ... ? </div>
 				<div>arst</div>

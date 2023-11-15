@@ -73,7 +73,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={`${noto.variable}`}>
-			<body className="min-h-screen bg-slate-50  antialiased">
+			<body className="min-h-screen  antialiased">
 				<NextAuthProvider>
 					<N_horizontal />
 					<div className='container mx-auto h-full max-w-7xl pt-20'>

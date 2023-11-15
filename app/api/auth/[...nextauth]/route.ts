@@ -69,9 +69,9 @@ const handler = NextAuth({
 
 		},
 		async signIn(user, accont, profile, email) {
-			const emailExists = await checkEmailAlreadyExist(email);
-
-			return `/arst/${email}`
+			const emailExists = await checkEmailAlreadyExist(user.email);
+			if (emailExists) { return true }
+			return '/signup?' + new URLSearchParams({ email: user.email || '' });
 
 		},
 		async jwt({ token, user }) {

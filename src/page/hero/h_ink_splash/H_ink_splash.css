@@ -1,22 +1,19 @@
 .mask-container {
   position: relative;
+  height:100vh;
 }
 
 .color-image {
-  position: absolute;
-  inset: 0;
   background-image: url("/effect/object/monitor-gray.png");
-  background-size: cover;
-
   -webkit-mask-image: url("/effect/ink/ink_1.png");
-  -webkit-mask-size: cover;
+    -webkit-mask-size: auto 100%;
   -webkit-mask-position: 0% 0%;
   mask-image: url("/effect/ink/ink_1.png");
-  mask-size: cover;
+  mask-size: auto 100vh;
   mask-position: 0% 0%;
 
-  transition: 
-    -webkit-mask-position ;
+  transition: -webkit-mask-position ;
+	transition: mask-position;
 }
 
 .mask-animation {

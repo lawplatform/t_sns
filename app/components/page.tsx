@@ -45,12 +45,6 @@ export default function Home() {
 				<C_Flip_3d></C_Flip_3d>
 
 			</div>
-			<div className="flex flex-row">
-				<C_product />
-				<C_product_1 msg={"temp"} />
-				<C_product_2 />
-			</div>
-			<C_comment />
 		</div>
 	);
 }

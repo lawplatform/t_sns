@@ -3,8 +3,6 @@ import { FC, ReactNode, RefObject, useEffect, useRef } from 'react';
 import { Engine, Scene, Camera, useScene, useCanvas, } from 'react-babylonjs'
 
 
-//const SC_isometric: React.FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => (
-
 
 export default function SC_isometric({ children }: { children: ReactNode }) {
 	const scene = useScene();
@@ -13,7 +11,7 @@ export default function SC_isometric({ children }: { children: ReactNode }) {
 	}
 
 	return (
-		<div style={{ flex: 1, display: 'flex bg-transparent' }}>
+		<div style={{ flex: 1, display: 'flex bg-transparent ' }}>
 			<Engine antialias adaptToDeviceRatio canvasId="babylon-canvas" renderOptions={{
 				whenVisibleOnly: true,
 			}} >

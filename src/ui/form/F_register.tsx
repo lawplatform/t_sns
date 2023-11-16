@@ -1,8 +1,8 @@
 "use client";
 import {
-	checkCustomEmail,
+	checkEmailAlreadyExist,
 	checkNameAlreadyExist,
-	isCustomEmail,
+	checkisCustomEmail,
 } from "@/app/lab/action";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,14 +46,14 @@ const formSchema = z.object({
 		})
 		.refine(
 			async (value) => {
-				const exists = await checkCustomEmail(value);
+				const exists = await checkEmailAlreadyExist(value);
 				return !exists; // Return true if the name doesn't exist
 			},
 			{ message: "이미 가입한 메일 주소 입니다" }
 		)
 		.refine(
 			async (value) => {
-				const mailexist = await isCustomEmail(value);
+				const mailexist = await checkisCustomEmail(value);
 				return !mailexist;
 			},
 			{ message: "sns 가입을 이용해주세요" }
@@ -74,7 +74,7 @@ const formSchema = z.object({
 		),
 });
 
-export default function F_signup_pur() {
+export default function F_register() {
 	const [showPassword, setShowPassword] = useState(false);
 	const { watch, trigger } = useForm();
 	const form = useForm<z.infer<typeof formSchema>>({

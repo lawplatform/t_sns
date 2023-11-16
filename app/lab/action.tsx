@@ -30,6 +30,6 @@ export async function checkEmailAlreadyExist(email: string) {
 	return data.length > 0;
 }
 
-export async function isCustomEmail(email: string) {
+export async function checkisCustomEmail(email: string) {
 	return ['gmail', 'navea', 'kakao'].some(domain => email.includes(domain));
 }

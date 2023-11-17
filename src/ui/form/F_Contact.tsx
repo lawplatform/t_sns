@@ -74,10 +74,10 @@ export default function F_contact() {
 	return (
 		<div className=" font-sans antialiased">
 			<Form {...form} >
-				<form className=" w-full " onSubmit={form.handleSubmit(onSubmit)}>
+				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<div className=" mx-auto py-8">
-						<div className="mx-auto w-full rounded bg-white shadow lg:w-1/2">
-							<div className="px-8 ">
+						<div className="mx-auto w-full rounded bg-white shadow">
+							<div className="px-8 py-4 ">
 								<FormField
 									control={form.control}
 									name="name"

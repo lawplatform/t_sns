@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Star from "../ui/symbol/Star"
-export default function sec_product_detail() {
+export default function Sec_product_detail() {
 	return (
 		<div className=" bg-red-100 md:max-w-6xl">
 			<section className=" py-12 md:py-24 lg:py-32">

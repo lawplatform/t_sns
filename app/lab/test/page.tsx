@@ -1,12 +1,16 @@
+import Gi_bpctdt from "@/src/gallery/item/gi_bpctdt";
 import Info_sign_currentPage from "@/src/page/info/info_sign_currentPage";
 import Info_subscribe from "@/src/page/info/info_subscribe";
-import Lan_ltri_1 from "@/src/page/landing/lan_ltri_1";
+import Lan_ltri_1 from "@/src/page/landing/basic/lan_ltri_1";
 import Sec_contact from "@/src/page/section/sec_contact";
 import ReactTypingEffectDemo from "@/src/ui/effect/textEffect";
 
 export default function Home() {
 	return (
 		<div>
+
+			<p className="text-red-200">this is test</p>
+			<p className="text-mainColor-200">this is test</p>
 			<Info_subscribe />
 			<Sec_contact />
 			<Info_sign_currentPage title={"소개"} parent={"홈"} currentPath={"소개"} />

@@ -14,6 +14,10 @@ module.exports = {
 			screens: {
 				"2xl": "1000px",
 			},
+			colors: {
+				mainColor: `#6064d4`,
+				conssul: '#3ab7bf',
+			}
 		},
 		extend: {
 			fontFamily: {

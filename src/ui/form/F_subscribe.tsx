@@ -60,7 +60,7 @@ export default function F_subscribe() {
 					<p className="mb-8 text-white">유용한 정보를 보내드립니다 </p>
 					<Form {...form}>
 						<form
-							className="mx-auto flex max-w-lg flex-wrap"
+							className=" flex w-full flex-wrap justify-center"
 							onSubmit={form.handleSubmit(onSubmit)}
 						>
 							<FormField
@@ -68,31 +68,33 @@ export default function F_subscribe() {
 								name="email"
 								render={({ field }) => (
 									<FormItem>
-										<div className="mb-2 flex w-full rounded border border-blue-300 bg-blue-500 px-3 md:mb-0 md:mr-6 md:w-2/3">
-											<svg
-												className=" my-auto h-6 w-6 text-blue-300"
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 20 20"
-												fill="currentColor"
-											>
-												<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-												<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-											</svg>
+										<div className="mx-auto flex w-full  justify-center text-center">
+											<div className=" mb-2 flex  rounded border border-blue-300 bg-blue-500 px-3 md:mb-0 md:mr-6 md:w-2/3">
+												<svg
+													className=" my-auto h-6 w-6 text-blue-300"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 20 20"
+													fill="currentColor"
+												>
+													<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+													<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+												</svg>
 
-											<FormControl>
-												<input
-													className="w-full bg-blue-500 py-4 pl-3 text-xs font-semibold leading-none text-white placeholder-white outline-none"
-													type="text"
-													placeholder="Type your e-mail"
-												/>
-											</FormControl>
+												<FormControl>
+													<input
+														className=" mx-auto bg-blue-500 py-4 pl-3 text-xs font-semibold leading-none text-white placeholder-white outline-none"
+														type="text"
+														placeholder="이메일을 입력하시오"
+													/>
+												</FormControl>
+											</div>
+											<FormMessage />
 										</div>
-										<FormMessage />
 									</FormItem>
 								)}
 							/>
 							<button
-								className="mt-3 w-full rounded border border-blue-300 bg-white px-8 py-4 text-xs font-semibold leading-none text-blue-800 transition duration-300 ease-in-out hover:border-blue-300 hover:bg-blue-500 hover:text-white md:w-auto"
+								className="mx-auto mt-3 w-full rounded border border-blue-300 bg-white px-8 py-4 text-xs font-semibold leading-none text-blue-800 transition duration-300 ease-in-out hover:border-blue-300 hover:bg-blue-500 hover:text-white md:w-auto"
 								type="submit"
 							>
 								등록하기

@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils'
 import N_horizontal from '@/src/ui/navigation/n_horizontal'
 import N_h_expand from '@/src/ui/navigation/n_h_expand.tsx'
+import N_navbar from '@/src/ui/navigation/n_navbar'
+import N_vertical from '@/src/ui/navigation/n_vertical'
 
 const inter = Inter({ subsets: ['latin'] })
 const noto = Noto_Sans({
@@ -75,7 +77,7 @@ export default function RootLayout({
 		<html lang="en" className={`${noto.variable}`}>
 			<body className="min-h-screen  antialiased">
 				<NextAuthProvider>
-					<N_horizontal />
+					<N_navbar />
 					<div className='container mx-auto h-full max-w-7xl pt-20'>
 						{children}
 					</div>

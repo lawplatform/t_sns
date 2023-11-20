@@ -1,4 +1,4 @@
-export default function Abstrac_gradation() {
+export default function Bg_gra_abstract() {
 	return (
 		//height position: -top
 		//width  position: -left

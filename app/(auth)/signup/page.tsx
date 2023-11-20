@@ -1,10 +1,10 @@
-import F_signup_pur from "@/src/ui/form/F_singup_pur";
+import F_register from "@/src/ui/form/F_register";
 
 export default function Home() {
 	return (
 		<div>
 
-			<F_signup_pur />
+			<F_register />
 		</div>
 	);
 }

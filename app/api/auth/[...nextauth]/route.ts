@@ -69,22 +69,37 @@ const handler = NextAuth({
 
 		},
 		async signIn(user, accont, profile, email) {
-			const emailExists = await checkEmailAlreadyExist(user.email);
-			if (emailExists) { return true }
-			return '/signup?' + new URLSearchParams({ email: user.email || '' });
+			const person = user.user;
+			const emailExists = await checkEmailAlreadyExist(person.email);
+			if (emailExists) {
+				return true
+			}
+			const { data, error } = await supabase.from('users').insert([
+				{ name: person.name, email: person.email, image: person.image },
+			]).select()
+			return true
+
+			//return '/signup?' + new URLSearchParams({ email: user.email || '' });
 
 		},
 		async jwt({ token, user }) {
 			return { ...token, ...user };
 		},
 
-		async session({ session, token }) {
-			session.user = token as any;
-			return session;
+		async session({ session, user }) {
+			const signingSecret = process.env.SUPABASE_JWT_SECRET
+			if (signingSecret) {
+				const payload = {
+					aud: "authenticated",
+					exp: Math.floor(new Date(session.expires).getTime() / 1000),
+					sub: user.id,
+					email: user.email,
+					role: "authenticated",
+				}
+				session.supabaseAccessToken = jwt.sign(payload, signingSecret)
+			}
+			return session
 		},
-	},
-	session: {
-		strategy: "jwt",
 	},
 	secret:
 		"3cc80b75056bd4ab892c977d6b9f7bd2bab0d52e487254463522a09e6f116c1b69a1d8f31ea5100e2efbffc2840f43d1",

@@ -9,6 +9,42 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      ai_chats: {
+        Row: {
+          created_at: string
+          id: number
+          title: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          title?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          title?: string | null
+        }
+        Relationships: []
+      }
+      ai_messages: {
+        Row: {
+          content: string | null
+          created_at: string
+          id: number
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          content?: string | null
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
       asking: {
         Row: {
           created_at: string
@@ -57,6 +93,62 @@ export interface Database {
         }
         Relationships: []
       }
+      file: {
+        Row: {
+          created_at: string | null
+          id: string
+          key: string | null
+          name: string | null
+          updated_at: string | null
+          upload_status: Database["public"]["Enums"]["upload_status"] | null
+          url: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          key?: string | null
+          name?: string | null
+          updated_at?: string | null
+          upload_status?: Database["public"]["Enums"]["upload_status"] | null
+          url?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          key?: string | null
+          name?: string | null
+          updated_at?: string | null
+          upload_status?: Database["public"]["Enums"]["upload_status"] | null
+          url?: string | null
+        }
+        Relationships: []
+      }
+      post: {
+        Row: {
+          created_at: string
+          id: string
+          text: string | null
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          text?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       real: {
         Row: {
           created_at: string
@@ -78,6 +170,54 @@ export interface Database {
         }
         Relationships: []
       }
+      temp_test: {
+        Row: {
+          created_at: string
+          id: number
+          text: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          text?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          text?: string | null
+        }
+        Relationships: []
+      }
+      user_file: {
+        Row: {
+          file_id: string
+          user_id: string
+        }
+        Insert: {
+          file_id: string
+          user_id: string
+        }
+        Update: {
+          file_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_file_file_id_fkey"
+            columns: ["file_id"]
+            isOneToOne: false
+            referencedRelation: "file"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_file_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       users: {
         Row: {
           email: string | null
@@ -85,6 +225,7 @@ export interface Database {
           image: string | null
           name: string | null
           password: string | null
+          vertified: boolean | null
         }
         Insert: {
           email?: string | null
@@ -92,6 +233,7 @@ export interface Database {
           image?: string | null
           name?: string | null
           password?: string | null
+          vertified?: boolean | null
         }
         Update: {
           email?: string | null
@@ -99,6 +241,7 @@ export interface Database {
           image?: string | null
           name?: string | null
           password?: string | null
+          vertified?: boolean | null
         }
         Relationships: []
       }
@@ -164,7 +307,7 @@ export interface Database {
       }
     }
     Enums: {
-      [_ in never]: never
+      upload_status: "PENDING" | "PROCESSING" | "FAILED" | "SUCCESS"
     }
     CompositeTypes: {
       [_ in never]: never
